@@ -1,0 +1,50 @@
+Categories:
+  - Internet
+  - Commerce
+
+License: MIT
+
+SourceCode: https://github.com/productionsgclef-debug/Local-Swap
+
+IssueTracker: https://github.com/productionsgclef-debug/Local-Swap/issues
+
+Summary: Local classified ads and marketplace platform
+
+Description: |
+  Local Swap is an open-source classified ads and marketplace platform designed for buying, selling, and connecting locally.
+  
+  Features:
+  - Browse and list classified ads with photos and descriptions
+  - Discover local job opportunities
+  - Join community channels and connect with neighbors
+  - Secure in-app messaging with buyers, sellers, and job contacts
+  - User profiles with ratings and reviews
+  - Advanced search and filtering
+  
+  All communication happens locally through the app, protecting user privacy while building community trust.
+
+Builds:
+  - versionName: '1.0.0'
+    versionCode: 1
+    commit: v1.0.0
+    gradle:
+      - yes
+    srclibs:
+      - nodejs@18
+    prebuild:
+      - npm install -g pnpm
+      - pnpm install
+    build:
+      - pnpm build
+    ndk: r25b
+
+AllowedAPKSigningKeys:
+  - 'REPLACE_WITH_YOUR_SIGNING_KEY'
+
+AutoUpdateMode: Version v%v
+
+UpdateCheckMode: Tags
+
+CurrentVersion: '1.0.0'
+
+CurrentVersionCode: 1

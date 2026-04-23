@@ -1,48 +1,126 @@
-import { ScrollView, Text, View, TouchableOpacity } from "react-native";
-
+import { FlatList, Text, View, Image, Pressable } from "react-native";
+import { useState } from "react";
 import { ScreenContainer } from "@/components/screen-container";
+import * as Haptics from "expo-haptics";
 
-/**
- * Home Screen - NativeWind Example
- *
- * This template uses NativeWind (Tailwind CSS for React Native).
- * You can use familiar Tailwind classes directly in className props.
- *
- * Key patterns:
- * - Use `className` instead of `style` for most styling
- * - Theme colors: use tokens directly (bg-background, text-foreground, bg-primary, etc.); no dark: prefix needed
- * - Responsive: standard Tailwind breakpoints work on web
- * - Custom colors defined in tailwind.config.js
- */
+interface Listing {
+  id: string;
+  title: string;
+  price: number;
+  location: string;
+  category: string;
+  image: string;
+  isFavorite?: boolean;
+}
+
+// Mock data for marketplace listings
+const MOCK_LISTINGS: Listing[] = [
+  {
+    id: "1",
+    title: "iPhone 14 Pro",
+    price: 800,
+    location: "Downtown",
+    category: "Electronics",
+    image: "https://via.placeholder.com/200x200?text=iPhone+14",
+  },
+  {
+    id: "2",
+    title: "Vintage Sofa",
+    price: 250,
+    location: "Midtown",
+    category: "Furniture",
+    image: "https://via.placeholder.com/200x200?text=Sofa",
+  },
+  {
+    id: "3",
+    title: "Mountain Bike",
+    price: 450,
+    location: "Park Area",
+    category: "Sports",
+    image: "https://via.placeholder.com/200x200?text=Bike",
+  },
+  {
+    id: "4",
+    title: "Laptop Stand",
+    price: 35,
+    location: "Downtown",
+    category: "Electronics",
+    image: "https://via.placeholder.com/200x200?text=Stand",
+  },
+  {
+    id: "5",
+    title: "Bookshelf",
+    price: 120,
+    location: "Uptown",
+    category: "Furniture",
+    image: "https://via.placeholder.com/200x200?text=Bookshelf",
+  },
+];
+
 export default function HomeScreen() {
-  return (
-    <ScreenContainer className="p-6">
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View className="flex-1 gap-8">
-          {/* Hero Section */}
-          <View className="items-center gap-2">
-            <Text className="text-4xl font-bold text-foreground">Welcome</Text>
-            <Text className="text-base text-muted text-center">
-              Edit app/(tabs)/index.tsx to get started
-            </Text>
-          </View>
+  const [listings, setListings] = useState<Listing[]>(MOCK_LISTINGS);
 
-          {/* Example Card */}
-          <View className="w-full max-w-sm self-center bg-surface rounded-2xl p-6 shadow-sm border border-border">
-            <Text className="text-lg font-semibold text-foreground mb-2">NativeWind Ready</Text>
-            <Text className="text-sm text-muted leading-relaxed">
-              Use Tailwind CSS classes directly in your React Native components.
-            </Text>
-          </View>
+  const toggleFavorite = (id: string) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setListings((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, isFavorite: !item.isFavorite } : item
+      )
+    );
+  };
 
-          {/* Example Button */}
-          <View className="items-center">
-            <TouchableOpacity className="bg-primary px-6 py-3 rounded-full active:opacity-80">
-              <Text className="text-background font-semibold">Get Started</Text>
-            </TouchableOpacity>
-          </View>
+  const renderListing = ({ item }: { item: Listing }) => (
+    <View className="flex-1 m-2 bg-surface rounded-xl overflow-hidden border border-border">
+      {/* Image */}
+      <View className="relative">
+        <Image
+          source={{ uri: item.image }}
+          className="w-full h-40 bg-border"
+        />
+        {/* Favorite Button */}
+        <Pressable
+          onPress={() => toggleFavorite(item.id)}
+          className="absolute top-2 right-2 bg-background rounded-full p-2 border border-border"
+          style={({ pressed }) => [pressed && { opacity: 0.7 }]}
+        >
+          <Text className="text-lg">{item.isFavorite ? "❤️" : "🤍"}</Text>
+        </Pressable>
+        {/* Category Badge */}
+        <View className="absolute bottom-2 left-2 bg-primary rounded-full px-3 py-1">
+          <Text className="text-xs font-semibold text-background">{item.category}</Text>
         </View>
-      </ScrollView>
+      </View>
+
+      {/* Content */}
+      <View className="p-3 gap-2">
+        <Text className="text-sm font-semibold text-foreground" numberOfLines={2}>
+          {item.title}
+        </Text>
+        <View className="flex-row justify-between items-center">
+          <Text className="text-lg font-bold text-primary">${item.price}</Text>
+          <Text className="text-xs text-muted">{item.location}</Text>
+        </View>
+      </View>
+    </View>
+  );
+
+  return (
+    <ScreenContainer className="p-0">
+      {/* Header */}
+      <View className="px-4 pt-4 pb-3 border-b border-border">
+        <Text className="text-2xl font-bold text-foreground">Local Swap</Text>
+        <Text className="text-sm text-muted">Buy, Sell & Connect Locally</Text>
+      </View>
+
+      {/* Listings Grid */}
+      <FlatList
+        data={listings}
+        renderItem={renderListing}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+        contentContainerStyle={{ paddingVertical: 8 }}
+        scrollEnabled={true}
+      />
     </ScreenContainer>
   );
 }
