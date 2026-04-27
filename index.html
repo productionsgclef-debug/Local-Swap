@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +6,57 @@
     <link rel="manifest" href="/manifest.json">
     <title>Local-Swap | Portal</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f0f7f4; }
-        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        body { 
+            font-family: -apple-system, sans-serif; 
+            background: #f0f7f4; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .card { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 24px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            text-align: center; 
+            max-width: 350px;
+        }
+        .icon { font-size: 64px; margin-bottom: 20px; }
+        h1 { color: #2d3436; margin: 10px 0; }
+        p { color: #636e72; line-height: 1.6; }
+        .btn { 
+            background: #4CAF50; 
+            color: white; 
+            border: none; 
+            padding: 12px 24px; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            margin-top: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>🔄 Local-Swap</h1>
-        <p>Your secure local trading and peer-to-peer swap portal is live.</p>
+        <div class="icon">🔄</div>
+        <h1>Local-Swap</h1>
+        <p>Your secure local trading and peer-to-peer swap portal is active.</p>
+        <button class="btn" onclick="alert('Searching for nearby swaps...')">Search Nearby</button>
     </div>
-    <script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
+
+    <!-- SERVICE WORKER SCRIPT INCLUDED BELOW -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Local-Swap SW Registered!'))
+                    .catch(err => console.log('Registration Failed', err));
+            });
+        }
+    </script>
 </body>
 </html>
+
+
