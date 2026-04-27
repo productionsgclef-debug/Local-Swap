@@ -1,0 +1,16 @@
+{
+  "name": "Local-Swap Portal",
+  "short_name": "LocalSwap",
+  "description": "Secure peer-to-peer local trading and swap portal.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0f7f4",
+  "theme_color": "#4CAF50",
+  "icons": [
+    {
+      "src": "https://placeholder.com",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
