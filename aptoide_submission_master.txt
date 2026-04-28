@@ -1,0 +1,70 @@
+text
+# =====================================================================
+# APTOIDE MASTER SUBMISSION FILE (2026)
+# Use this for all 5 Apps to ensure a fast, consistent launch.
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# 1. TECHNICAL: GENERATE UNIVERSAL APK (Required for Aptoide)
+# ---------------------------------------------------------------------
+# Aptoide does NOT accept .aab (App Bundles). You must convert them.
+# Run this command for each app to get the 'universal.apk' file.
+
+java -jar bundletool.jar build-apks \
+--bundle=your_app_name.aab \
+--output=temp_output.apks \
+--mode=universal \
+--ks=YOUR_RELEASE_KEYSTORE.jks \
+--ks-pass=pass:YOUR_PASSWORD \
+--ks-key-alias=YOUR_ALIAS \
+--key-pass=pass:YOUR_PASSWORD
+
+# INSTRUCTIONS:
+# 1. Rename 'temp_output.apks' to 'temp_output.zip'.
+# 2. Open the zip and extract 'universal.apk'.
+# 3. This 'universal.apk' is what you upload to Aptoide.
+
+# ---------------------------------------------------------------------
+# 2. STORE METADATA (Copy/Paste to Aptoide Dashboard)
+# ---------------------------------------------------------------------
+
+APP TITLE: [Insert 30-character name here]
+CATEGORY: [e.g., Tools / Productivity / Entertainment]
+
+DESCRIPTION:
+[The Problem Your App Solves]
+Key Features:
+- [Feature 1]
+- [Feature 2]
+- [Feature 3]
+Download now and start [Benefit]!
+
+KEYWORDS: [List 5-10 keywords separated by commas]
+SUPPORT EMAIL: [Your Email]
+PRIVACY POLICY URL: [Your Hosted Privacy Policy Link]
+
+# ---------------------------------------------------------------------
+# 3. VISUAL ASSETS CHECKLIST
+# ---------------------------------------------------------------------
+[ ] APP ICON: 512x512 px (PNG or JPG).
+[ ] SCREENSHOTS: At least 2 (1080x1920 px or similar).
+[ ] FEATURE GRAPHIC: 1024x500 px (Optional but recommended).
+
+# ---------------------------------------------------------------------
+# 4. STEP-BY-STEP UPLOAD PROCESS
+# ---------------------------------------------------------------------
+1. Go to: https://aptoide.com
+2. Click "ADD APP" (The pink '+' button).
+3. Select "Upload File" and choose your 'universal.apk'.
+4. Ownership Verification: 
+   - If your app is also on Google Play, use the "Sync" option.
+   - If standalone, fill in the metadata manually using the text above.
+5. Content Rating: Complete the brief questionnaire (PEGI/ESRB).
+6. Submit: Hit "Publish" and wait ~48 hours for certification.
+
+# ---------------------------------------------------------------------
+# 5. 2026 COMPLIANCE NOTES
+# ---------------------------------------------------------------------
+- BITS: Must include 64-bit support (arm64-v8a). 
+- BILLING: If your app has sales, use Aptoide Billing SDK (not Google Play).
+- DELETION: Account deletion links must be visible in the app.
