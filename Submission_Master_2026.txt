@@ -1,0 +1,78 @@
+# =====================================================================
+# MASTER APP SUBMISSION & LEGAL FILE (2026 UNIFIED VERSION)
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# 1. THE PRIVACY POLICY (HTML for GitHub Pages)
+# ---------------------------------------------------------------------
+# Create 'privacy.html' in your GitHub repo and paste this code:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - SwapLocal</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        h1 { color: #1a1a1a; border-bottom: 2px solid #eaeaea; padding-bottom: 12px; }
+        h2 { color: #007aff; margin-top: 35px; }
+        .highlight { background: #f9f9f9; padding: 15px; border-left: 4px solid #007aff; margin: 20px 0; }
+        .footer { margin-top: 60px; font-size: 0.85em; color: #888; border-top: 1px solid #eaeaea; pt: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Privacy Policy for SwapLocal</h1>
+    <p><strong>Last Updated: April 28, 2026</strong></p>
+    <p>This policy explains how we protect your information when you use the <strong>SwapLocal: Trade & Barter</strong> mobile application.</p>
+    
+    <h2>1. Information Collection</h2>
+    <ul>
+        <li><strong>Account Info:</strong> Username and email address for listing management.</li>
+        <li><strong>Location Data:</strong> Approximate location to show nearby trades (Requires Permission).</li>
+    </ul>
+
+    <h2>2. Mandatory Data Deletion</h2>
+    <div class="highlight">
+        <strong>How to Delete Your Data:</strong><br>
+        Delete your account and all data via <strong>Settings > Account > Delete Account</strong> within the app.
+    </div>
+
+    <h2>3. Ownership Statement</h2>
+    <p>Official documentation for package: <strong>com.yourbrand.swaplocal</strong>.</p>
+
+    <h2>4. Contact Support</h2>
+    <p><strong>Email:</strong> support@yourdomain.com</p>
+
+    <div class="footer">&copy; 2026 SwapLocal Team.</div>
+</body>
+</html>
+
+# ---------------------------------------------------------------------
+# 2. TECHNICAL SETUP (Copy-Paste for 5 Apps)
+# ---------------------------------------------------------------------
+
+[ANDROID: build.gradle]
+android {
+    defaultConfig {
+        ndk { abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64' }
+    }
+}
+
+[APTOIDE: Universal APK Conversion Script]
+# Run this to convert .aab to .apk for Aptoide
+java -jar bundletool.jar build-apks --bundle=APP.aab --output=APP.apks --mode=universal --ks=KEY.jks
+
+# ---------------------------------------------------------------------
+# 3. STORE METADATA (30-Char limit for 2026)
+# ---------------------------------------------------------------------
+APP NAME: SwapLocal: Trade & Barter
+PACKAGE NAME: com.yourbrand.swaplocal
+SHORT DESC (80): The easiest way to swap, trade, and barter items with neighbors near you.
+
+# ---------------------------------------------------------------------
+# 4. FINAL CHECKLIST
+# ---------------------------------------------------------------------
+[ ] GITHUB URL: Paste your https://[user].github.io/[repo]/privacy.html into Aptoide.
+[ ] PACKAGE NAME: Must match exactly in the Dashboard and the APK.
+[ ] OWNERSHIP: Use the same email for Aptoide as you do for your Support Email.
