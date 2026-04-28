@@ -1,0 +1,17 @@
+android {
+    defaultConfig {
+        // ... your other settings ...
+
+        // This ensures both 32-bit and 64-bit support
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+    }
+
+    // Force the use of App Bundles for optimized delivery
+    bundle {
+        abi {
+            enableSplit = true
+        }
+    }
+}
