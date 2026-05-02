@@ -1,0 +1,8 @@
+Local Swap is a modern, open-source classified ads and marketplace platform for buying, selling, and connecting locally. Local Swap combines a vibrant marketplace, job board, and community channels into a single, user-friendly mobile application.
+
+Features:
+- Marketplace: Browse and list classified ads with photos, descriptions, and pricing.
+- Jobs Board: Discover local job opportunities and apply directly.
+- Community Channels: Join topic-based channels and connect with your neighborhood.
+- Messaging: Communicate securely with built-in messaging.
+- User Profiles: Build trust with verified profiles, ratings, and reviews.
