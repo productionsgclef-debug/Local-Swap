@@ -1,18 +1,31 @@
 name: Android APK Build
 on:
-  workflow_dispatch:
+  workflow_dispatch: # This lets you start the build manually
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: npm install -g pnpm
-      - run: pnpm install
-      - run: pnpm build:android
-      - uses: actions/upload-artifact@v4
+          node-version: 22 # Updated to latest stable
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Android APK
+        run: pnpm build:android
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
         with:
           name: android-apk
           path: android/app/build/outputs/apk/release/app-release.apk
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
